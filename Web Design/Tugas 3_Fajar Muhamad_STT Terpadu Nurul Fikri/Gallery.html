@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dream Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .bike-gallery,
+        .car-gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px 0;
+            scroll-behavior: smooth;
+        }
+
+        .bike-gallery img,
+        .car-gallery img {
+            flex: 0 0 auto;
+            width: 250px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .bike-gallery img:hover,
+        .car-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .bike-gallery::-webkit-scrollbar,
+        .car-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .bike-gallery,
+        .car-gallery {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .back-button {
+            margin-top: auto;
+            align-self: center;
+            padding: 10px 20px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h2>My Dream Bikes Gallery</h2>
+        <div class="bike-gallery">
+            <img src="https://i.pinimg.com/564x/ec/7f/e0/ec7fe01a1e7e6cf9c394726f206ebb94.jpg" alt="Dream Bike 1">
+            <img src="https://imgx.gridoto.com/crop/120x86:1171x825/750x500/filters:watermark(file/2017/gridoto/img/watermark_otomotifnet.png,5,5,60)/photo/2020/05/22/373073308.jpg" alt="Dream Bike 2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQIzDAroBrVHA1AncEAfMoHk3BppyDOlbpjg&s" alt="Dream Bike 3">
+            <img src="https://imgcdn.zigwheels.co.th/large/gallery/exterior/93/1761/ktm-rc-200-slant-front-view-full-image-980308.jpg" alt="Dream Bike 4">
+            <img src="https://asset.kompas.com/crops/3hOvgRMR1_X-Bm_4hUdAltX-x1I=/0x23:960x663/1200x800/data/photo/2021/08/10/6111f4b18cfe4.jpg" alt="Dream Bike 5">
+        </div>
+    </section>
+
+    <section>
+        <h2>My Dream Cars Gallery</h2>
+        <div class="car-gallery">
+            <img src="https://assets.karyakarsa.com/post-image-65190ed653273.jpg" alt="Dream Car 1">
+            <img src="https://stanceauto.co.uk/uploads/images/2022/08/image_750x500_630df090d145d.jpg" alt="Dream Car 2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj-z1V2yoESiZgmVDYWmKXEYLUJufD8J6z-A&s" alt="Dream Car 3">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkpINFhNqOhvrgR65F-i6pySnGxnN3QqDcXw&s" alt="Dream Car 4">
+        </div>
+    </section>
+
+    <a href="main.html" class="back-button">Kembali ke Main</a>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum Vitae</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 32px;
+      border: 3px solid #000;
+      padding: 10px;
+      margin: 20px auto;
+      width: 75%;
+      border-radius: 10px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #000;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      width: 95%;
+      margin: auto;
+    }
+
+    .bio-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border: 3px solid #000;
+      border-radius: 10px;
+      min-height: 600px;
+      padding: 20px;
+    }
+
+    .bio-header {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .bio-header img {
+      width: 220px;
+      border-radius: 10px;
+    }
+
+    .section {
+      flex: 1;
+      max-width: 100%;
+    }
+
+    .back-btn {
+      margin-top: auto;
+      align-self: flex-end;
+      padding: 8px 15px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Curriculum Vitae</h1>
+  <div class="container">
+    <div class="bio-container">
+      <div class="bio-header">
+        <img src="https://media.vanityfair.com/photos/63765577474812eb37ec70bc/master/w_2560%2Cc_limit/Headshot%2520-%2520credit%2520%25E2%2580%259CNational%2520Geographic%2520for%2520Disney+%25E2%2580%259D.jpg" alt="Foto Profil CV">
+
+        <div class="section" id="biodata">
+          <h2>Biodata</h2>
+          <p>Nama                 : Fajar Muhamad</p>
+          <p>Tempat Tanggal Lahir : Bogor, 29 Mei 2003</p>
+          <p>Agama                : Islam</p>
+          <p>Alamat               : Perumahan Bojong Gede Asri Blok A8 no.2</p>
+          <p>Kontak               : 081319941507</p>
+          <p>Email                : faja23078ti@student.nurulfikri.ac.id</p>
+        </div>
+      </div>
+
+      <button class="back-btn" onclick="window.location.href='main.html'" target="main">
+        ⬅ Kembali ke Main
+      </button>
+    </div>
+  </div>
+</body>
+</html>
