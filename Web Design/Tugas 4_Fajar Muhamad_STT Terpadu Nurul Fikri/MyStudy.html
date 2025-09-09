@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pendidikan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+            color: #1f2937;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 900px;
+            border: 2px solid #2563eb;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            min-height: 80vh;
+            background: #fff;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #1e3a8a;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2563eb;
+            color: white;
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        tr:hover {
+            background-color: #e0f2fe;
+        }
+
+        .footer {
+            background-color: #f59e0b;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-btn {
+            margin-top: 25px;
+            align-self: flex-end;
+            padding: 10px 20px;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        .back-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+        /* Responsif */
+        @media screen and (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            tr {
+                margin-bottom: 15px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            th {
+                text-align: left;
+                background-color: #2563eb;
+                color: white;
+                padding-left: 12px;
+                border: none;
+            }
+
+            td {
+                text-align: left;
+                padding-left: 12px;
+                border: none;
+                border-bottom: 1px solid #ccc;
+                position: relative;
+                padding-top: 6px;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                display: inline-block;
+                width: 120px;
+                color: #374151;
+            }
+
+            .footer {
+                text-align: center;
+                background-color: #f59e0b;
+                border-radius: 6px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Riwayat Pendidikan</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Institusi</th>
+                    <th>Jurusan</th>
+                    <th>Tahun</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="No">1</td>
+                    <td data-label="Nama Institusi">SDN Kedung Waringin 05</td>
+                    <td data-label="Jurusan">Sekolah Dasar</td>
+                    <td data-label="Tahun">2009 - 2015</td>
+                </tr>
+                <tr>
+                    <td data-label="No">2</td>
+                    <td data-label="Nama Institusi">SMP Taruna Terpadu Borcess 1</td>
+                    <td data-label="Jurusan">Sekolah Menengah Pertama</td>
+                    <td data-label="Tahun">2015 - 2018</td>
+                </tr>
+                <tr>
+                    <td data-label="No">3</td>
+                    <td data-label="Nama Institusi">SMA Taruna Terpadu Borcess 1</td>
+                    <td data-label="Jurusan">MIPA</td>
+                    <td data-label="Tahun">2018 - 2021</td>
+                </tr>
+                <tr>
+                    <td data-label="No">4</td>
+                    <td data-label="Nama Institusi">Sekolah Hacker By Cilsy Fiolution Indonesia</td>
+                    <td data-label="Jurusan">Cyber Security Course</td>
+                    <td data-label="Tahun">2021 - 2022</td>
+                </tr>
+                <tr>
+                    <td data-label="No">5</td>
+                    <td data-label="Nama Institusi">STT Terpadu Nurul Fikri</td>
+                    <td data-label="Jurusan">Teknik Informatika</td>
+                    <td data-label="Tahun">2023 - Present</td>
+                </tr>
+                <tr class="footer">
+                    <td colspan="4">Keep Learning</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="back-btn" onclick="window.location.href='main.html'" target="main">
+            ⬅ Kembali ke Main
+        </button>
+    </div>
+</body>
+</html>

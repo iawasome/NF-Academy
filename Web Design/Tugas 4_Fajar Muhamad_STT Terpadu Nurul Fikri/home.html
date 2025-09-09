@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum Vitae</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      font-size: 18px;
+      background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+      color: #1f2937;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px auto;
+      font-size: 34px;
+      border: 3px solid #2563eb;
+      padding: 12px;
+      width: 75%;
+      border-radius: 12px;
+      background: #eff6ff;
+      color: #1e3a8a;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+      color: #1f2937;
+    }
+
+    .container {
+      width: 95%;
+      margin: auto;
+      max-width: 1000px;
+    }
+
+    .bio-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border: 3px solid #2563eb;
+      border-radius: 12px;
+      min-height: 600px;
+      padding: 25px;
+      background: white;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .bio-header {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .bio-header img {
+      width: 220px;
+      border-radius: 12px;
+      border: 3px solid #2563eb;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .section {
+      flex: 1;
+      max-width: 100%;
+    }
+
+    .section p {
+      margin: 8px 0;
+      padding: 6px 10px;
+      background: #f3f4f6;
+      border-radius: 6px;
+    }
+
+    .back-btn {
+      margin-top: auto;
+      align-self: flex-end;
+      padding: 10px 20px;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    .back-btn:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body>
+  <h1>Curriculum Vitae</h1>
+  <div class="container">
+    <div class="bio-container">
+      <div class="bio-header">
+        <img src="https://media.vanityfair.com/photos/63765577474812eb37ec70bc/master/w_2560%2Cc_limit/Headshot%2520-%2520credit%2520%25E2%2580%259CNational%2520Geographic%2520for%2520Disney+%25E2%2580%259D.jpg" alt="Foto Profil CV">
+
+        <div class="section" id="biodata">
+          <h2>Biodata</h2>
+          <p>Nama                 : Fajar Muhamad</p>
+          <p>Tempat Tanggal Lahir : Bogor, 29 Mei 2003</p>
+          <p>Agama                : Islam</p>
+          <p>Alamat               : Perumahan Bojong Gede Asri Blok A8 no.2</p>
+          <p>Kontak               : 081319941507</p>
+          <p>Email                : faja23078ti@student.nurulfikri.ac.id</p>
+        </div>
+      </div>
+
+      <button class="back-btn" onclick="window.location.href='main.html'" target="main">
+        ⬅ Kembali ke Main
+      </button>
+    </div>
+  </div>
+</body>
+</html>
