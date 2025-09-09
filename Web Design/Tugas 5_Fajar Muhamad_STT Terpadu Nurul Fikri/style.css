@@ -1,0 +1,22 @@
+
+  header, nav, footer {
+    border: 1px solid blue;
+    text-align: center;
+    margin: 10px 0;
+    padding: 20px 0;
+  }
+
+  .content {
+    display: flex;
+    gap: 10px;
+    height: 70vh;
+  }
+
+  .content aside,
+  .content main {
+    flex: 1;
+    border: 1px solid orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
