@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas RWD Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page { display: none; }
+    .page.active { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/img/banner1.png" class="d-block w-100" alt="Banner 1">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/img/banner2.png" class="d-block w-100" alt="Banner 2">
+      </div>
+      <div class="carousel-item">
+        <img src="assets/img/banner3.png" class="d-block w-100" alt="Banner 3">
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">NF Academy</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#" onclick="showPage('home', this, event)">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="loadPage('study','MyStudy.html', this, event)">MyStudy</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="loadPage('gallery','Gallery.html', this, event)">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="loadPage('datatable','datatables.html', this, event)">Datatable</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container my-4">
+  <div class="row">
+    <aside class="col-md-4">
+      <div class="p-3 bg-light border rounded">
+        <h4>Content</h4>
+        <ul>
+          <li><a href="https://nfacademy.id" target="_blank">nfacademy.id</a></li>
+          <li><a href="https://nurulfikri.ac.id" target="_blank">nurulfikri.ac.id</a></li>
+          <li><a href="https://dosen.nurulfikri.ac.id" target="_blank">dosen.nurulfikri.ac.id</a></li>
+          <li><a href="https://bootstrapmade.com" target="_blank">bootstrapmade.com</a></li>
+          <li><a href="https://getbootstrap.com" target="_blank">getbootstrap.com</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="col-md-8">
+      <div class="p-3 bg-white border rounded">
+        <div id="home" class="page active">
+          <h4 class="text-primary border-bottom pb-2">Selamat Datang 👋</h4>
+          <p>Halo, nama saya <b>Fajar Muhamad</b>. Saya seorang <b>Full Stack Developer</b>.</p>
+          <ul>
+            <li><b>Email:</b> fajarcool234@gmail.com</li>
+            <li><b>No HP:</b> +62 813-1994-1507</li>
+            <li><b>Alamat:</b> Bogor</li>
+          </ul>
+        </div>
+        <div id="study" class="page"></div>
+        <div id="gallery" class="page"></div>
+        <div id="datatable" class="page"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="bg-dark text-white text-center py-3">
+  <p>&copy; Tugas 6 Fajar Muhamad-STT Terpadu Nurul Fikri | Made by bootstrap 5</p>
+  <p>
+    <a href="https://www.linkedin.com/in/fajar-muhamad-5606011b8/" class="text-white mx-2"><i class="bi bi-linkedin"></i></a>
+    <a href="https://www.instagram.com/fajar_iawasome" class="text-white mx-2"><i class="bi bi-instagram"></i></a>
+    <a href="https://github.com/iawasome" class="text-white mx-2"><i class="bi bi-github"></i></a>
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function setActive(pageId, navLinkElement) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    navLinkElement.classList.add('active');
+  }
+
+  function showPage(pageId, navLinkElement, event) {
+    if (event) event.preventDefault();
+    setActive(pageId, navLinkElement);
+  }
+
+  function loadPage(pageId, file, navLinkElement, event) {
+    if (event) event.preventDefault();
+    fetch(file)
+      .then(response => {
+        if (!response.ok) throw new Error("File tidak ditemukan: " + response.status);
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById(pageId).innerHTML = data;
+        setActive(pageId, navLinkElement);
+      })
+      .catch(err => {
+        document.getElementById(pageId).innerHTML = `<p class='text-danger'>Gagal memuat halaman. Pastikan file '${file}' ada di folder yang sama.</p>`;
+        setActive(pageId, navLinkElement);
+        console.error("Load error:", err);
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const mainContentArea = document.querySelector('.col-md-8');
+    
+    mainContentArea.addEventListener('click', function(event) {
+      if (event.target.matches('.back-to-home')) {
+        event.preventDefault();
+        const homeNavLink = document.querySelector('.nav-link[onclick*="showPage(\'home\'"]');
+
+        showPage('home', homeNavLink);
+      }
+    });
+  });
+</script>
+</body>
+</html>

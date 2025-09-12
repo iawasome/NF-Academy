@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datatable</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container my-4">
+  <h2>Data Sertifikat</h2>
+  <table id="myTable" class="table table-striped">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Instisusi</th>
+        <th>Tahun</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Certificate of Completion</td><td>Sekolah Hacker</td><td>2022</td></tr>
+      <tr><td>2</td><td>ISO/IEC 27001 INFORMATION SECURITY ASSOCIATE</td><td>SkillFront</td><td>2022</td></tr>
+      <tr><td>3</td><td>Best Practitioner</td><td>STT Terpadu Nurul Fikri</td><td>2025</td></tr>
+      <tr><td>4</td><td>Most Powerful App</td><td>STT Terpadu Nurul Fikri</td><td>2025</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<a href="#" class="btn btn-primary mt-3 back-to-home">⬅ Kembali ke Home</a>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#myTable').DataTable();
+  });
+</script>
+</body>
+</html>
