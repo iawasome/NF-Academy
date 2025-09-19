@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tugas 1 - JavaScript Modern</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      margin: 0;
+      padding-top: 40px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    select, input, button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .result {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #2c3e50;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Hitung Luas Bangun Datar</h2>
+
+    <!-- Pilihan Bangun Datar -->
+    <label for="bangun">Pilih Bangun Datar:</label>
+    <select id="bangun">
+      <option value="persegiPanjang">Persegi Panjang</option>
+      <option value="bujurSangkar">Bujur Sangkar</option>
+      <option value="segitiga">Segitiga</option>
+    </select>
+
+    <!-- Input Dinamis -->
+    <div id="input-container"></div>
+
+    <!-- Tombol Hitung -->
+    <button onclick="hitung()">Hitung Luas</button>
+
+    <!-- Hasil -->
+    <div class="result" id="hasil"></div>
+  </div>
+
+  <script>
+    const inputContainer = document.getElementById("input-container");
+    const bangunSelect = document.getElementById("bangun");
+    const hasilDiv = document.getElementById("hasil");
+
+    // Fungsi menampilkan input sesuai pilihan
+    function updateInput() {
+      let bangun = bangunSelect.value;
+      let html = "";
+
+      if (bangun === "persegiPanjang") {
+        html = `
+          <label for="panjang">Panjang:</label>
+          <input type="number" id="panjang" placeholder="Masukkan panjang">
+          <label for="lebar">Lebar:</label>
+          <input type="number" id="lebar" placeholder="Masukkan lebar">
+        `;
+      } else if (bangun === "bujurSangkar") {
+        html = `
+          <label for="sisi">Sisi:</label>
+          <input type="number" id="sisi" placeholder="Masukkan sisi">
+        `;
+      } else if (bangun === "segitiga") {
+        html = `
+          <label for="alas">Alas:</label>
+          <input type="number" id="alas" placeholder="Masukkan alas">
+          <label for="tinggi">Tinggi:</label>
+          <input type="number" id="tinggi" placeholder="Masukkan tinggi">
+        `;
+      }
+
+      inputContainer.innerHTML = html;
+    }
+
+    // Fungsi menghitung luas
+    function hitung() {
+      let bangun = bangunSelect.value;
+      let hasil = 0;
+
+      if (bangun === "persegiPanjang") {
+        let panjang = parseFloat(document.getElementById("panjang").value);
+        let lebar = parseFloat(document.getElementById("lebar").value);
+        hasil = panjang * lebar;
+        hasilDiv.innerHTML = `Luas Persegi Panjang = ${hasil}`;
+      } 
+      else if (bangun === "bujurSangkar") {
+        let sisi = parseFloat(document.getElementById("sisi").value);
+        hasil = sisi * sisi;
+        hasilDiv.innerHTML = `Luas Bujur Sangkar = ${hasil}`;
+      } 
+      else if (bangun === "segitiga") {
+        let alas = parseFloat(document.getElementById("alas").value);
+        let tinggi = parseFloat(document.getElementById("tinggi").value);
+        hasil = 0.5 * alas * tinggi;
+        hasilDiv.innerHTML = `Luas Segitiga = ${hasil}`;
+      }
+    }
+
+    // Update input pertama kali
+    updateInput();
+
+    // Ganti input setiap kali pilihan berubah
+    bangunSelect.addEventListener("change", updateInput);
+  </script>
+</body>
+</html>
