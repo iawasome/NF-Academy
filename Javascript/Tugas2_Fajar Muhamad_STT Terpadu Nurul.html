@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Pegawai</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .btn-add {
+      background: #2563eb;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    .btn-add:hover {
+      background: #1d4ed8;
+    }
+
+    .form-box {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .form-box h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #334155;
+    }
+    .form-box input,
+    .form-box select {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+    .btn-danger {
+      background: #dc2626;
+      color: white;
+    }
+    .btn-danger:hover {
+      background: #b91c1c;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+    thead {
+      background: #f1f5f9;
+      font-weight: bold;
+    }
+    tfoot {
+      background: #f9fafb;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="btn-add" onclick="showForm()">+ Tambah Pegawai</button>
+
+    <div class="form-box" id="formBox">
+      <h3>Form Pegawai</h3>
+      <input type="text" id="nama" placeholder="Nama Pegawai">
+      <input type="number" id="umur" placeholder="Umur">
+      <select id="jabatan">
+        <option value="manajer">Manajer</option>
+        <option value="asisten manajer">Asisten Manajer</option>
+        <option value="staff">Staff</option>
+      </select>
+      <select id="status">
+        <option value="menikah">Menikah</option>
+        <option value="belum menikah">Belum Menikah</option>
+      </select>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" onclick="tambahPegawai()">Simpan</button>
+        <button class="btn btn-danger" onclick="batal()">Batal</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nama Pegawai</th>
+          <th>Umur</th>
+          <th>Jabatan</th>
+          <th>Status</th>
+          <th>Gaji Pokok</th>
+          <th>Tunjangan Jabatan</th>
+          <th>BPJS</th>
+          <th>Tunjangan Keluarga</th>
+        </tr>
+      </thead>
+      <tbody id="dataPegawai"></tbody>
+      <tfoot id="totalGaji"></tfoot>
+    </table>
+  </div>
+
+  <script>
+    let dataPegawai = [
+      { nama: "dodi prayodi", umur: 25, jabatan: "manajer", status: "menikah" }
+    ];
+
+    function hitungGaji(pegawai) {
+      let gapok = 0;
+      if (pegawai.jabatan === "manajer") gapok = 15000000;
+      else if (pegawai.jabatan === "asisten manajer") gapok = 10000000;
+      else gapok = 5000000;
+
+      let tunjanganJabatan = 0.15 * gapok;
+      let bpjs = 0.10 * gapok;
+      let tunjanganKeluarga = (pegawai.status === "menikah") ? 0.20 * gapok : 0;
+      let total = gapok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+
+      return { gapok, tunjanganJabatan, bpjs, tunjanganKeluarga, total };
+    }
+
+    function renderTable() {
+      let tbody = document.getElementById("dataPegawai");
+      let tfoot = document.getElementById("totalGaji");
+      tbody.innerHTML = "";
+      let totalSemua = 0;
+
+      dataPegawai.forEach(p => {
+        let gaji = hitungGaji(p);
+        totalSemua += gaji.total;
+        tbody.innerHTML += `
+          <tr>
+            <td>${p.nama}</td>
+            <td>${p.umur}</td>
+            <td>${p.jabatan}</td>
+            <td>${p.status}</td>
+            <td>Rp ${gaji.gapok.toLocaleString("id-ID")}</td>
+            <td>Rp ${gaji.tunjanganJabatan.toLocaleString("id-ID")}</td>
+            <td>Rp ${gaji.bpjs.toLocaleString("id-ID")}</td>
+            <td>Rp ${gaji.tunjanganKeluarga.toLocaleString("id-ID")}</td>
+          </tr>
+        `;
+      });
+
+      tfoot.innerHTML = `
+        <tr>
+          <td colspan="8">Total Gaji: Rp ${totalSemua.toLocaleString("id-ID")}</td>
+        </tr>
+      `;
+    }
+
+    function showForm() {
+      document.getElementById("formBox").style.display = "block";
+    }
+
+    function batal() {
+      document.getElementById("formBox").style.display = "none";
+    }
+
+    function tambahPegawai() {
+      let nama = document.getElementById("nama").value.trim();
+      let umur = parseInt(document.getElementById("umur").value);
+      let jabatan = document.getElementById("jabatan").value;
+      let status = document.getElementById("status").value;
+
+      if (!nama || !umur) {
+        alert("Nama dan Umur wajib diisi!");
+        return;
+      }
+
+      dataPegawai.push({ nama, umur, jabatan, status });
+      renderTable();
+      batal();
+
+      document.getElementById("nama").value = "";
+      document.getElementById("umur").value = "";
+      document.getElementById("jabatan").value = "manajer";
+      document.getElementById("status").value = "menikah";
+    }
+    renderTable();
+  </script>
+</body>
+</html>
