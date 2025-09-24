@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tugas 5 JS - Manajemen Produk</title>
+</head>
+<body>
+  <h2>Manajemen Produk</h2>
+
+  <!-- Form tambah produk -->
+  <form id="formTambah">
+    <input type="number" id="idProduk" placeholder="ID Produk" required>
+    <input type="text" id="namaProduk" placeholder="Nama Produk" required>
+    <input type="number" id="hargaProduk" placeholder="Harga Produk" required>
+    <button type="submit">Tambah Produk</button>
+  </form>
+  <br>
+
+  <!-- Form hapus produk -->
+  <form id="formHapus">
+    <input type="number" id="hapusId" placeholder="ID Produk yang akan dihapus" required>
+    <button type="submit">Hapus Produk</button>
+  </form>
+  <br>
+
+  <!-- Tombol tampilkan -->
+  <button id="btnTampil">Tampilkan Produk</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    // **Data Produk awal minimal 5**
+    let produkList = [
+      { id: 1, nama: "Laptop", harga: 12000000 },
+      { id: 2, nama: "Smartphone", harga: 5000000 },
+      { id: 3, nama: "Headset", harga: 750000 },
+      { id: 4, nama: "Keyboard", harga: 350000 },
+      { id: 5, nama: "Mouse", harga: 200000 }
+    ];
+
+    // **Menambahkan produk dengan Spread Operator**
+    function tambahProduk(...data) {
+      const [id, nama, harga] = data; // destructuring parameter
+      produkList = [...produkList, { id, nama, harga }];
+      tampilkanProduk();
+    }
+
+    // **Menghapus produk dengan Rest Parameter**
+    function hapusProduk(...id) {
+      produkList = produkList.filter(produk => !id.includes(produk.id));
+      tampilkanProduk();
+    }
+
+    // **Menampilkan produk dengan Destructuring**
+    function tampilkanProduk() {
+      let hasil = "=== Daftar Produk ===\n";
+      for (const {id, nama, harga} of produkList) {
+        hasil += `ID: ${id}, Nama: ${nama}, Harga: Rp${harga}\n`;
+      }
+      document.getElementById("output").textContent = hasil;
+    }
+
+    // **Event Listener**
+    document.getElementById("formTambah").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = parseInt(document.getElementById("idProduk").value);
+      const nama = document.getElementById("namaProduk").value;
+      const harga = parseInt(document.getElementById("hargaProduk").value);
+      tambahProduk(id, nama, harga);
+      e.target.reset();
+    });
+
+    document.getElementById("formHapus").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = parseInt(document.getElementById("hapusId").value);
+      hapusProduk(id);
+      e.target.reset();
+    });
+
+    document.getElementById("btnTampil").addEventListener("click", tampilkanProduk);
+
+    // tampilkan produk pertama kali
+    tampilkanProduk();
+  </script>
+</body>
+</html>

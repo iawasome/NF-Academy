@@ -1,4 +1,3 @@
-// Class Kendaraan (sebagai parent class)
 class Kendaraan {
   constructor(nama, tipe) {
     this.nama = nama;
@@ -10,7 +9,6 @@ class Kendaraan {
   }
 }
 
-// Class turunan kendaraan
 class Mobil extends Kendaraan {
   constructor(nama, kapasitas) {
     super(nama, "Mobil");
@@ -25,7 +23,6 @@ class Motor extends Kendaraan {
   }
 }
 
-// Class Pelanggan
 class Pelanggan {
   constructor(nama, nomorTelepon) {
     this.nama = nama;
@@ -47,7 +44,6 @@ class Pelanggan {
   }
 }
 
-// Sistem Manajemen Transportasi
 class SistemTransportasi {
   constructor() {
     this.daftarPelanggan = [];
@@ -65,26 +61,18 @@ class SistemTransportasi {
   }
 }
 
-// ======= Contoh Penggunaan =======
-
-// Buat kendaraan
 const mobil1 = new Mobil("Toyota Supra", 7);
 const motor1 = new Motor("Honda CBR 150R", 2);
 
-// Buat pelanggan
 const pelanggan1 = new Pelanggan("Fajar", "081319941507");
 const pelanggan2 = new Pelanggan("Reyvo", "081319941504");
 
-// Buat sistem transportasi
 const sistem = new SistemTransportasi();
 
-// Tambah pelanggan ke sistem
 sistem.tambahPelanggan(pelanggan1);
 sistem.tambahPelanggan(pelanggan2);
 
-// Pelanggan sewa kendaraan
 pelanggan1.sewaKendaraan(mobil1);
 pelanggan2.sewaKendaraan(motor1);
 
-// Tampilkan daftar pelanggan penyewa kendaraan
 sistem.tampilkanPelanggan();
